@@ -1,12 +1,9 @@
 package com.alterra.miniproject.mininews.entities;
 
-import com.alterra.miniproject.mininews.config.StandardFormat;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -21,11 +18,9 @@ public class Post extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @Size(max = 100)
     private String source;
 
-    @NotBlank
     @Size(max = 100)
     private String author;
 
@@ -42,7 +37,6 @@ public class Post extends BaseEntity {
     private String urlToImage;
 
     @Column(name = "published_at")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = StandardFormat.BASIC_FORMAT_OFFSET_DATETIME)
     private OffsetDateTime publishedAt;
 
     @Column(columnDefinition = "TEXT")
